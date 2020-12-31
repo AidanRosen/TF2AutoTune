@@ -5,6 +5,31 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
+
+import java.io.File;
+import java.util.*;
+public class TF2MOD {
+
+    public static void main(String[] args) {
+        System.out.println("Enter the location of your steam directory. Input is case sensitive (Look at example for help)\n Example: C:\\Program Files (x86)\\Steam");
+        Scanner input = new Scanner(System.in);
+        String Steam_Location = input.nextLine();
+
+        System.out.println("Adding a 'Custom' file, if you already have one it will not be added.");
+        File Custom_file = new File(Steam_Location + "\\steamapps\\common\\Team Fortress 2\\tf\\custom");
+        //Creating the directory
+        boolean bool = Custom_file.mkdir();
+        if(bool){
+            System.out.println("'Custom' file created successfully");
+        }else{
+            System.out.println("Sorry couldn't create specified directory. Make sure you are inputting the correct location, you have space on the computer, nothing is mispelled, or you already have the customs folder");
+        }
+
+    }
+
+}
+
+
 public class Main {
     public static void main(String[] args) throws IOException {
         System.out.println("Before file movement");
