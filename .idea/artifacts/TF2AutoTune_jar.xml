@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="TF2AutoTune:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/TF2AutoTune_jar</output-path>
+    <root id="archive" name="TF2AutoTune.jar">
+      <element id="module-output" name="TF2AutoTune" />
+    </root>
+  </artifact>
+</component>

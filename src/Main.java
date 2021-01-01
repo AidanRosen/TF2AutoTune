@@ -8,17 +8,35 @@ import java.util.Scanner;  // Import the Scanner class
 
 
 public class Main {
-    public static void main(String[] args) throws IOException {
-        System.out.println("Before file movement");
 
-        File storageUnit = new File("C:\\Users\\RosenKids\\Desktop\\TF2withSFX\\storedPaths.txt");
+    private static String programDirectoryG; // "G" stands for global
+
+    public static void main(String[] args) throws IOException {
+        System.out.println("\nBefore file movement");
+
+
 
         Scanner myObj = new Scanner(System.in);  // Create a Scanner object ;;; Add a check to see if this is the first time. If so, add the storedPaths file
 
-        storageUnit.createNewFile();
+        System.out.println("What is the EXACT path of the directory your TF2withSFX folder is in? I.e C:\\Users\\username\\Desktop");
+        String sfxDirectory = myObj.nextLine() + "\\";
+
+        File sfxFolder = new File(sfxDirectory + "storedProgramFolder.txt");
+
+        if (!sfxFolder.exists()){ //This needs to trigger if the file does NOT exist. In other words, if it is false that it exists
+            sfxFolder.createNewFile(); //<-- will probably need a try and except <-- Ved
+
+        }
+
+        FileWriter sfxFolderWriter = new FileWriter(sfxFolder); //NOTE: don't put the \n here, because that directory doesn't exist
+        sfxFolderWriter.write(sfxDirectory);//first time configuration <-- maybe have two classes for first-time configuration and second time configuration?
+        //we store storageDir and NOT the file because we want to make it such that you just type the file name + the folder it is in, then it concatenates the stored path there
+        //Also
+        sfxFolderWriter.close();
+
 
         int readiness = 3;
-        System.out.println("Is this your first time running this software? Type '0', exactly 0, if so and configurations will be run. Type '1' if you are ready to modify sounds.");
+        System.out.println("\n\nIs this your first time running this software? Type '0', exactly 0, if so and configurations will be run. Type '1' if you are ready to modify sounds.");
 
         do {
             try{
@@ -39,54 +57,37 @@ public class Main {
         //Prevent the important nextLines from reading that \n character, and instead read user input as intended from the beginning
 
         System.out.println("\nyou chose option " + readiness);
+        // AFTER this print, go into separate directions of configuration or direct file addition
 
-        System.out.println("What is the EXACT path of the directory you contain your sound files in? I.e C:\\Users\\username\\Desktop");
+        if (readiness == 0){
+            Configurations configuring = new Configurations();
+            configuring.main(sfxDirectory);
 
-        String storageDir = myObj.nextLine(); // Read user input
+            /***
+             * NEED to pass in programDirectoryG so that the folder path of the program is completely dynamic AND only has to be written once in configuration
+             * Tricky part: what if they jump straight into option 1?
+             * How can I check that .txt file and not worry about hard coding the path?
+             * Do I need to code it from a .jar perspective?
+             *
+             * Answer: Ask in the Main file!!!!!111!!!1
+             *
+             *
+             * For future: rewrite directories as just being new .txt files ONLY for those in the TF2withSFX folder. Reason is because the .jar file can
+             * detect files in the same directory as itself without error or the need to add a path!
+             * Repalce paths with "directory of this .jar file"
+             *
+             * ***/
 
-        storageDir += "\\"; //need to add a backslash so that file name can be slapped right on the end. Prevents the need to add the \ later
+            System.out.println("Configuration complete! Close terminal to end program");
 
-        System.out.println("What is the EXACT name of the file you wish to move? Include file extension i.e ededdeddy.wav");
-
-        String storageFile = myObj.nextLine();  // Read user input for the name of the .wav file
-
-        System.out.println("What is the exact path to your TF2 custom folder?");
-        String tfCustom = myObj.nextLine() + "\\";
-
-        File customPath = new File("C:\\Users\\RosenKids\\Desktop\\TF2withSFX\\customPaths.txt");
-
-        if (!customPath.exists()){ //This needs to trigger if the file does NOT exist. In other words, if it is false that it exists
-            customPath.createNewFile(); //<-- will probably need a try and except <-- Ved
-
+            System.out.println("\nReturning to the main menu...");
+            Main.main(null);
+            /**IMPORTANT! Be sure to return to the main menu after configuration!**/
         }
 
-
-        FileWriter storageWriter = new FileWriter("C:\\Users\\RosenKids\\Desktop\\TF2withSFX\\storedPaths.txt"); //NOTE: don't put the \n here, because that directory doesn't exist
-        storageWriter.write(storageDir);//first time configuration <-- maybe have two classes for first-time configuration and second time configuration?
-        //we store storageDir and NOT the file because we want to make it such that you just type the file name + the folder it is in, then it concatenates the stored path there
-        //Also
-        storageWriter.close();
-
-        FileWriter customWriter = new FileWriter("C:\\Users\\RosenKids\\Desktop\\TF2withSFX\\customPaths.txt");
-        customWriter.write(tfCustom);
-        customWriter.close();
-
-
-        BufferedReader reader = new BufferedReader(new FileReader("C:\\Users\\RosenKids\\Desktop\\TF2withSFX\\storedPaths.txt")); //Need buffered reader to go line by line
-        String trueStorageDir = reader.readLine();
-
-
-
-        //For copying a file to a new place
-
-        Path source = Paths.get(trueStorageDir + storageFile); //using trueStorageDir so that I can check the .txt file properly stores the directory and can be used for fetching
-        //"C:\\Users\\RosenKids\\Desktop\\spySumo.wav" <-- test with this: path: up to Desktop , storageFile: spySumo.wav
-
-
-        Path destination = Paths.get("C:\\Program Files (x86)\\Steam\\steamapps\\common\\Team Fortress 2\\tf\\custom\\Ed_Edd_N'Eddy_KILLSOUND\\sound\\weapons\\knife_swing_crit.wav");
-
-        Files.copy(source, destination, StandardCopyOption.REPLACE_EXISTING);
-        System.out.println("After file movement");
+        if (readiness == 1){
+            Modifications additions = new Modifications(sfxDirectory);
+        }
 
 
 
