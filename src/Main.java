@@ -14,26 +14,26 @@ public class Main {
     public static void main(String[] args) throws IOException {
         System.out.println("\nBefore file movement");
 
-
-
-        Scanner myObj = new Scanner(System.in);  // Create a Scanner object ;;; Add a check to see if this is the first time. If so, add the storedPaths file
-
-        System.out.println("What is the EXACT path of the directory your TF2withSFX folder is in? I.e C:\\Users\\username\\Desktop");
-        String sfxDirectory = myObj.nextLine() + "\\";
-
-        File sfxFolder = new File(sfxDirectory + "storedProgramFolder.txt");
-
-        if (!sfxFolder.exists()){ //This needs to trigger if the file does NOT exist. In other words, if it is false that it exists
-            sfxFolder.createNewFile(); //<-- will probably need a try and except <-- Ved
+        File file = new File("projectPath.txt");
+        if (!file.exists()){ //This needs to trigger if the file does NOT exist. In other words, if it is false that it exists
+            file.createNewFile(); //<-- will probably need a try and except <-- Ved
 
         }
 
-        FileWriter sfxFolderWriter = new FileWriter(sfxFolder); //NOTE: don't put the \n here, because that directory doesn't exist
-        sfxFolderWriter.write(sfxDirectory);//first time configuration <-- maybe have two classes for first-time configuration and second time configuration?
+        System.out.println(file.getAbsoluteFile().getParent() + "\\" + "          end of print statement\n\n"); //NOTE: the file itself is just projectPath.txt --> this means we need
+        //to get the absolute file in order to get the parent path!
+
+
+        String sfxFilePath = String.valueOf(file.getAbsoluteFile().getParent()) + "\\"; //<-- gets path to .txt file with
+        //Need to add \\ so that files can just be concatenated to the end of the folder
+
+        FileWriter sfxFolderWriter = new FileWriter(file); //Want to write in projectPath so we can fetch it later
+        sfxFolderWriter.write(sfxFilePath);//first time configuration <-- maybe have two classes for first-time configuration and second time configuration?
         //we store storageDir and NOT the file because we want to make it such that you just type the file name + the folder it is in, then it concatenates the stored path there
         //Also
         sfxFolderWriter.close();
 
+        Scanner myObj = new Scanner(System.in);  // Create a Scanner object ;;; Add a check to see if this is the first time. If so, add the storedPaths file
 
         int readiness = 3;
         System.out.println("\n\nIs this your first time running this software? Type '0', exactly 0, if so and configurations will be run. Type '1' if you are ready to modify sounds.");
@@ -61,7 +61,6 @@ public class Main {
 
         if (readiness == 0){
             Configurations configuring = new Configurations();
-            configuring.main(sfxDirectory);
 
             /***
              * NEED to pass in programDirectoryG so that the folder path of the program is completely dynamic AND only has to be written once in configuration
@@ -86,7 +85,7 @@ public class Main {
         }
 
         if (readiness == 1){
-            Modifications additions = new Modifications(sfxDirectory);
+            Modifications additions = new Modifications();
         }
 
 

@@ -1,6 +1,4 @@
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.Scanner;
 
 
@@ -14,24 +12,27 @@ public class Configurations {
 
     public Configurations() throws IOException {
         /**ADD a print statement stating what can be done in this option!!!111!!!1!!11!1!!1**/
-      // this.main();
+        this.main();
     }
 
 
-    public String main (String sfxDirectory) throws IOException {
+    public void main () throws IOException {
+
+        BufferedReader reader = new BufferedReader(new FileReader("projectPath.txt")); //Need buffered reader to go line by line
+        String sfxFilePath = reader.readLine();
 
 
 
         Scanner myObj = new Scanner(System.in);  // Create a Scanner object ;;; Add a check to see if this is the first time. If so, add the storedPaths file
 
-        File customPath = new File(sfxDirectory + "customPaths.txt");
+        File customPath = new File(sfxFilePath + "customPaths.txt");
 
         if (!customPath.exists()){ //This needs to trigger if the file does NOT exist. In other words, if it is false that it exists
             customPath.createNewFile(); //<-- will probably need a try and except <-- Ved
 
         }
 
-        File storedPaths = new File(sfxDirectory + "storedPaths.txt");
+        File storedPaths = new File(sfxFilePath + "storedPaths.txt");
 
         if (!storedPaths.exists()){ //This needs to trigger if the file does NOT exist. In other words, if it is false that it exists
             storedPaths.createNewFile(); //<-- will probably need a try and except <-- Ved
@@ -40,14 +41,14 @@ public class Configurations {
 
 
 
-        System.out.println("What is the EXACT path of the directory you contain your sound files in? I.e C:\\Users\\username\\Desktop");
+        System.out.println("What is the EXACT path of the directory you contain your sound files in? BE sure to keep any soundfiles you upload in this folder! I.e C:\\Users\\username\\Desktop");
 
         String storageDir = myObj.nextLine(); // Read user input
 
         storageDir += "\\"; //need to add a backslash so that file name can be slapped right on the end. Prevents the need to add the \ later
 
 
-        System.out.println("What is the exact path to your TF2 custom folder?");
+        System.out.println("What is the exact path to your TF2 custom folder? By default this is C:\\Program Files (x86)\\Steam\\steamapps\\common\\Team Fortress 2\\tf\\custom");
         String tfCustom = myObj.nextLine() + "\\";
 
 
@@ -64,6 +65,6 @@ public class Configurations {
         customWriter.write(tfCustom);
         customWriter.close();
 
-        return sfxDirectory;
+
     }
 }

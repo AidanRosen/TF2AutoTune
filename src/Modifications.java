@@ -10,14 +10,17 @@ import java.util.Scanner;
 
 public class Modifications {
 
-    public Modifications(String programFolderPath) throws IOException {
+    public Modifications() throws IOException {
         /**ADD a print statement stating what can be done in this option!!!111!!!1!!11!1!!1**/
-        this.main(programFolderPath);
+        this.main();
     }
 
-    public void main (String programFolderPath) throws IOException {
+    public void main () throws IOException {
 
         Scanner soundScanner = new Scanner(System.in);
+
+        BufferedReader projectFolderReader = new BufferedReader(new FileReader("projectPath.txt")); //Need buffered reader to go line by line
+        String sfxFilePath = projectFolderReader.readLine(); //Get file path to folder with all other stored txt files
 
 
         System.out.println("What is the EXACT name of the file you wish to move? Include file extension i.e ededdeddy.wav");
@@ -31,7 +34,7 @@ public class Modifications {
 
 
 
-        BufferedReader reader = new BufferedReader(new FileReader(programFolderPath + "storedPaths.txt")); //Need buffered reader to go line by line
+        BufferedReader reader = new BufferedReader(new FileReader(sfxFilePath + "storedPaths.txt")); //Need buffered reader to go line by line
         String trueStorageDir = reader.readLine();
         //Belongs in option1. The path through the TF2withSFX folder SHOULD be a string that can be concatenated to deal with locations other than Users\\RosenKids lmao
         //However, the storedPaths.txt part is hardcoded
@@ -39,7 +42,7 @@ public class Modifications {
         /***NOTE: Need to save UP to TF2withSFX as it's own string!!!!!!!1111!!!1 to be saved in a txt file and then read ***/
 
 
-        BufferedReader customReader = new BufferedReader(new FileReader(programFolderPath + "customPaths.txt")); //Need buffered reader to go line by line
+        BufferedReader customReader = new BufferedReader(new FileReader(sfxFilePath + "customPaths.txt")); //Need buffered reader to go line by line
         String customDir = customReader.readLine();
         //Belongs in option1. The path through the TF2withSFX folder SHOULD be a string that can be concatenated....
         //However, the storedPaths.txt part is hardcoded
