@@ -1,7 +1,4 @@
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -12,7 +9,17 @@ public class Modifications {
 
     public Modifications() throws IOException {
         /**ADD a print statement stating what can be done in this option!!!111!!!1!!11!1!!1**/
-        this.main();
+        File tempFile = new File("customPaths.txt");
+        if (tempFile.exists()){ //This needs to trigger if the file does NOT exist. In other words, if it is false that it exists
+            System.out.println("\n\nConfigurations ready; entering modifications");
+            System.out.println("In this mode, you will enter the file name of the sound you are importing, and the name of the sound you are changing\n\n");
+            this.main();
+
+        }
+        else {
+            System.out.println("Your configurations are not ready. Please type in 0 after returning to the main menu and enter the folder-paths for your configurations\n\n");
+        }
+        Main.main(null);
     }
 
     public void main () throws IOException {
@@ -23,12 +30,12 @@ public class Modifications {
         String sfxFilePath = projectFolderReader.readLine(); //Get file path to folder with all other stored txt files
 
 
-        System.out.println("What is the EXACT name of the file you wish to move? Include file extension i.e ededdeddy.wav");
+        System.out.println("What is the EXACT name of the .wav (must be .wav) file you wish to move? Include file extension i.e ededdeddy.wav (.wav is the file extension)");
 
         String soundSource = soundScanner.nextLine();  // Read user input for the name of the .wav file
         //NOTE: The above line belongs in the second option, AKA option 1 BECAUSE it involves copying files into custom, not storing pathways
 
-        System.out.println("\n\nWhat is the EXACT name of the sound you are trying to modify? Refer to this site: https://www.maurits.tv/data/garrysmod/wiki/wiki.garrysmod.com/index82eb.html\n format should look like spy_knife_crit.wav \n please include the .wav");
+        System.out.println("\n\nWhat is the EXACT name of the sound you are trying to modify? Refer to this site: https://www.maurits.tv/data/garrysmod/wiki/wiki.garrysmod.com/index82eb.html\n format should look like knife_swing_crit.wav \n please include the .wav");
 
         String soundType = soundScanner.nextLine();
 
@@ -60,12 +67,12 @@ public class Modifications {
 
 
         Files.copy(source, destination, StandardCopyOption.REPLACE_EXISTING);
-        System.out.println("After file movement");
+        System.out.println("After file movement\n\n");
 
-        System.out.println("Modification complete! Try it out in game! Close terminal to end program");
+        System.out.println("Modification complete! Try it out in game! Close terminal to end program\n\n");
 
-        System.out.println("\nReturning to the main menu...");
-        Main.main(null);
+        System.out.println("Returning to the main menu...\n\n");
+
 
 
 

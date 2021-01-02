@@ -12,7 +12,7 @@ public class Main {
     private static String programDirectoryG; // "G" stands for global
 
     public static void main(String[] args) throws IOException {
-        System.out.println("\nBefore file movement");
+        System.out.println("Welcome to TF2withSFX!\n\nBefore file movement");
 
         File file = new File("projectPath.txt");
         if (!file.exists()){ //This needs to trigger if the file does NOT exist. In other words, if it is false that it exists
@@ -20,7 +20,7 @@ public class Main {
 
         }
 
-        System.out.println(file.getAbsoluteFile().getParent() + "\\" + "          end of print statement\n\n"); //NOTE: the file itself is just projectPath.txt --> this means we need
+        //System.out.println(file.getAbsoluteFile().getParent() + "\\" + "          end of print statement\n\n"); //NOTE: the file itself is just projectPath.txt --> this means we need
         //to get the absolute file in order to get the parent path!
 
 
@@ -56,7 +56,7 @@ public class Main {
         myObj.nextLine(); //<-- REALLY important. At the end of nextInt there's apparently a \n character, which the next .nextLine accepts as an input. We need this 'useless' .nextLine to
         //Prevent the important nextLines from reading that \n character, and instead read user input as intended from the beginning
 
-        System.out.println("\nyou chose option " + readiness);
+        System.out.println("\nyou chose option " + readiness + "\n\n");
         // AFTER this print, go into separate directions of configuration or direct file addition
 
         if (readiness == 0){
@@ -77,9 +77,9 @@ public class Main {
              *
              * ***/
 
-            System.out.println("Configuration complete! Close terminal to end program");
+            System.out.println("\n\nConfiguration complete! Close terminal to end program");
 
-            System.out.println("\nReturning to the main menu...");
+            System.out.println("Returning to the main menu...\n\n\n\n\n\n");
             Main.main(null);
             /**IMPORTANT! Be sure to return to the main menu after configuration!**/
         }

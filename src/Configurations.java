@@ -41,14 +41,14 @@ public class Configurations {
 
 
 
-        System.out.println("What is the EXACT path of the directory you contain your sound files in? BE sure to keep any soundfiles you upload in this folder! I.e C:\\Users\\username\\Desktop");
+        System.out.println("\n\nWhat is the EXACT path of the directory you contain your sound files in? BE sure to keep any soundfiles you upload in this folder! I.e C:\\Users\\username\\Desktop");
 
         String storageDir = myObj.nextLine(); // Read user input
 
         storageDir += "\\"; //need to add a backslash so that file name can be slapped right on the end. Prevents the need to add the \ later
 
 
-        System.out.println("What is the exact path to your TF2 custom folder? By default this is C:\\Program Files (x86)\\Steam\\steamapps\\common\\Team Fortress 2\\tf\\custom");
+        System.out.println("\n\nWhat is the exact path to your TF2 custom folder? By default this is C:\\Program Files (x86)\\Steam\\steamapps\\common\\Team Fortress 2\\tf\\custom");
         String tfCustom = myObj.nextLine() + "\\";
 
 
