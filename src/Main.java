@@ -7,6 +7,13 @@ import java.util.*;
 import java.util.Scanner;  // Import the Scanner class
 
 
+//Authors: Aidan "Ampersands" Rosen and Ved "Mr. Anime PFP" Iyer
+//Created On : 7/8/2015 9:56:39 AM
+//Last Modified On : 8/9/2015 11:53:23 AM
+//Copy Rights : your company
+//Description : Class for defining database related function
+
+
 public class Main {
 
     private static String programDirectoryG; // "G" stands for global
@@ -14,24 +21,11 @@ public class Main {
     public static void main(String[] args) throws IOException {
         System.out.println("Welcome to TF2withSFX!\n\nBefore file movement");
 
-        File file = new File("projectPath.txt");
-        if (!file.exists()){ //This needs to trigger if the file does NOT exist. In other words, if it is false that it exists
-            file.createNewFile(); //<-- will probably need a try and except <-- Ved
-
-        }
 
         //System.out.println(file.getAbsoluteFile().getParent() + "\\" + "          end of print statement\n\n"); //NOTE: the file itself is just projectPath.txt --> this means we need
         //to get the absolute file in order to get the parent path!
 
 
-        String sfxFilePath = String.valueOf(file.getAbsoluteFile().getParent()) + "\\"; //<-- gets path to .txt file with
-        //Need to add \\ so that files can just be concatenated to the end of the folder
-
-        FileWriter sfxFolderWriter = new FileWriter(file); //Want to write in projectPath so we can fetch it later
-        sfxFolderWriter.write(sfxFilePath);//first time configuration <-- maybe have two classes for first-time configuration and second time configuration?
-        //we store storageDir and NOT the file because we want to make it such that you just type the file name + the folder it is in, then it concatenates the stored path there
-        //Also
-        sfxFolderWriter.close();
 
         Scanner myObj = new Scanner(System.in);  // Create a Scanner object ;;; Add a check to see if this is the first time. If so, add the storedPaths file
 

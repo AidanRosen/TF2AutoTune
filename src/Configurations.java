@@ -18,16 +18,18 @@ public class Configurations {
 
     public void main () throws IOException {
 
-        BufferedReader reader = new BufferedReader(new FileReader("projectPath.txt")); //Need buffered reader to go line by line
-        String sfxFilePath = reader.readLine();
 
 
 
         Scanner myObj = new Scanner(System.in);  // Create a Scanner object ;;; Add a check to see if this is the first time. If so, add the storedPaths file
 
-        File customPath = new File(sfxFilePath + "customPaths.txt");
+        File customPath = new File("./customPaths.txt");
+        customPath.setReadable(true); //read
+        customPath.setWritable(true); //write
+        customPath.setExecutable(true);
 
         if (!customPath.exists()){ //This needs to trigger if the file does NOT exist. In other words, if it is false that it exists
+
             customPath.createNewFile(); //<-- will probably need a try and except <-- Ved
 
         }
@@ -49,7 +51,11 @@ public class Configurations {
          *      WILL need to reset the string as the file is read
          * */
 
-        File storedPaths = new File(sfxFilePath + "storedPaths.txt"); //storedPaths stores the music folder (where all wavs are kept_)
+        File storedPaths = new File("storedPaths.txt"); //storedPaths stores the music folder (where all wavs are kept_)
+        System.out.println("This file was created " + storedPaths.getAbsolutePath());
+        storedPaths.setReadable(true); //read
+        storedPaths.setWritable(true); //write
+        storedPaths.setExecutable(true);
 
         if (!storedPaths.exists()){ //This needs to trigger if the file does NOT exist. In other words, if it is false that it exists
             storedPaths.createNewFile(); //<-- will probably need a try and except <-- Ved
@@ -64,8 +70,6 @@ public class Configurations {
 
         storageDir += "\\"; //need to add a backslash so that file name can be slapped right on the end. Prevents the need to add the \ later
 
-
-        System.out.println("\n\nWhat is the exact path to your TF2 custom folder? By default this is C:\\Program Files (x86)\\Steam\\steamapps\\common\\Team Fortress 2\\tf\\custom");
 
 
 
@@ -118,13 +122,18 @@ public class Configurations {
 
         //File writing area
 
-        FileWriter storageWriter = new FileWriter(storedPaths); //storedPaths stores the music folder
+        System.out.println("Attempting to open" + storedPaths.getAbsolutePath());
+        System.out.println("Does storedPaths exist? " + storedPaths.exists());
+        System.out.println("Is stored paths a directory? " + storedPaths.isDirectory());
+        System.out.println("Is storedPaths readable? " + storedPaths.canRead());
+        FileWriter storageWriter = new FileWriter(storedPaths.getAbsolutePath()); //storedPaths stores the music folder
         //NOTE: don't put the \n here, because that directory doesn't exist
         storageWriter.write(storageDir);//first time configuration <-- maybe have two classes for first-time configuration and second time configuration?
         //we store storageDir and NOT the file because we want to make it such that you just type the file name + the folder it is in, then it concatenates the stored path there
         //Also
         storageWriter.close();
 
+        System.out.println("Attempting to open" + customPath.getAbsolutePath());
         FileWriter customWriter = new FileWriter(customPath); //customPath is the FILE with tfCustom/Steam_Location inside
         customWriter.write(Total_Location);
         customWriter.close();
