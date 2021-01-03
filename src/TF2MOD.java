@@ -40,7 +40,7 @@ public class TF2MOD {
 
     public static void Custom(String Steam_Location) {
 
-        System.out.println("Adding a 'Custom' file, if you already have one it will not be added.");
+        System.out.println("\n\nAdding a 'Custom' file, if you already have one it will not be added.");
         File Custom_file = new File(Steam_Location + "\\steamapps\\common\\Team Fortress 2\\tf\\custom");
         //Creating the directory
         boolean bool_1 = Custom_file.mkdir();
