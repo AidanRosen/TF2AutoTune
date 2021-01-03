@@ -23,6 +23,19 @@ public class TF2MOD {
         UI(Total_Location);
         VO(Total_Location);
 
+        Scanner test = new Scanner(System.in);
+        String str = input.nextLine();
+
+        int location = str.indexOf("/");
+        String split[] = str.split("");
+
+        String finale = "";
+        for (int i = 0; i < location; i++) {
+            finale += split[i];
+        }
+
+        System.out.print(finale);
+
     }
 
     public static void Custom(String Steam_Location) {
