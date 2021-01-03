@@ -23,7 +23,7 @@ public class Configurations {
 
         Scanner myObj = new Scanner(System.in);  // Create a Scanner object ;;; Add a check to see if this is the first time. If so, add the storedPaths file
 
-        File customPath = new File("./customPaths.txt");
+        File customPath = new File("customPaths.txt");
         customPath.setReadable(true); //read
         customPath.setWritable(true); //write
         customPath.setExecutable(true);
@@ -58,6 +58,7 @@ public class Configurations {
         storedPaths.setExecutable(true);
 
         if (!storedPaths.exists()){ //This needs to trigger if the file does NOT exist. In other words, if it is false that it exists
+            System.out.println("storedPaths does not exist, creating a new file");
             storedPaths.createNewFile(); //<-- will probably need a try and except <-- Ved
 
         }
@@ -132,6 +133,7 @@ public class Configurations {
         //we store storageDir and NOT the file because we want to make it such that you just type the file name + the folder it is in, then it concatenates the stored path there
         //Also
         storageWriter.close();
+        System.out.println("File writer successful on stored path");
 
         System.out.println("Attempting to open" + customPath.getAbsolutePath());
         FileWriter customWriter = new FileWriter(customPath); //customPath is the FILE with tfCustom/Steam_Location inside
