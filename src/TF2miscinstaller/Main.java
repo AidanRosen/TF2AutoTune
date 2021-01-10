@@ -17,7 +17,7 @@ public class Main {
     private static String programDirectoryG; // "G" stands for global
 
     public static void main(String[] args) throws IOException {
-        System.out.println("Welcome to TF2withSFX!\n\nBefore file movement");
+        System.out.println("Welcome to TF2withSFX!\n\n");
 
 
         //System.out.println(file.getAbsoluteFile().getParent() + "\\" + "          end of print statement\n\n"); //NOTE: the file itself is just projectPath.txt --> this means we need
