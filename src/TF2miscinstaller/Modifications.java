@@ -1,3 +1,7 @@
+package TF2miscinstaller;
+
+import TF2miscinstaller.Main;
+
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -11,7 +15,7 @@ public class Modifications {
         /**ADD a print statement stating what can be done in this option!!!111!!!1!!11!1!!1**/
         File tempFile = new File("customPaths.txt");
         if (tempFile.exists()){ //This needs to trigger if the file does NOT exist. In other words, if it is false that it exists
-            System.out.println("\n\nConfigurations ready; entering modifications");
+            System.out.println("\n\nTF2miscinstaller.Configurations ready; entering modifications");
             System.out.println("In this mode, you will enter the file name of the sound you are importing, and the name of the sound you are changing\n\n");
             this.main();
 
@@ -85,7 +89,6 @@ public class Modifications {
 
         Files.copy(source, destination, StandardCopyOption.REPLACE_EXISTING);
 
-        System.out.println("After file movement\n\n");
 
         System.out.println("Modification complete! Try it out in game! Close terminal to end program\n\n");
 

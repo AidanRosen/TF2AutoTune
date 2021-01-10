@@ -1,3 +1,5 @@
+package TF2miscinstaller;
+
 import java.io.*;
 import java.util.Scanner;
 
@@ -52,13 +54,11 @@ public class Configurations {
          * */
 
         File storedPaths = new File("storedPaths.txt"); //storedPaths stores the music folder (where all wavs are kept_)
-        System.out.println("This file was created " + storedPaths.getAbsolutePath());
         storedPaths.setReadable(true); //read
         storedPaths.setWritable(true); //write
         storedPaths.setExecutable(true);
 
         if (!storedPaths.exists()){ //This needs to trigger if the file does NOT exist. In other words, if it is false that it exists
-            System.out.println("storedPaths does not exist, creating a new file");
             storedPaths.createNewFile(); //<-- will probably need a try and except <-- Ved
 
         }
@@ -123,19 +123,14 @@ public class Configurations {
 
         //File writing area
 
-        System.out.println("Attempting to open" + storedPaths.getAbsolutePath());
-        System.out.println("Does storedPaths exist? " + storedPaths.exists());
-        System.out.println("Is stored paths a directory? " + storedPaths.isDirectory());
-        System.out.println("Is storedPaths readable? " + storedPaths.canRead());
-        FileWriter storageWriter = new FileWriter(storedPaths.getAbsolutePath()); //storedPaths stores the music folder
+        FileWriter storageWriter = new FileWriter(storedPaths); //storedPaths stores the music folder
         //NOTE: don't put the \n here, because that directory doesn't exist
         storageWriter.write(storageDir);//first time configuration <-- maybe have two classes for first-time configuration and second time configuration?
         //we store storageDir and NOT the file because we want to make it such that you just type the file name + the folder it is in, then it concatenates the stored path there
         //Also
         storageWriter.close();
-        System.out.println("File writer successful on stored path");
 
-        System.out.println("Attempting to open" + customPath.getAbsolutePath());
+
         FileWriter customWriter = new FileWriter(customPath); //customPath is the FILE with tfCustom/Steam_Location inside
         customWriter.write(Total_Location);
         customWriter.close();

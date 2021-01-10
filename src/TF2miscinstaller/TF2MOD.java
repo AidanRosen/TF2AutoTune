@@ -1,3 +1,5 @@
+package TF2miscinstaller;
+
 import java.io.File;
 import java.util.*;
 public class TF2MOD {

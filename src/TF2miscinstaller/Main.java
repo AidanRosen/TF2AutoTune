@@ -1,8 +1,6 @@
+package TF2miscinstaller;
+
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
 import java.util.*;
 import java.util.Scanner;  // Import the Scanner class
 
@@ -62,7 +60,7 @@ public class Main {
              * How can I check that .txt file and not worry about hard coding the path?
              * Do I need to code it from a .jar perspective?
              *
-             * Answer: Ask in the Main file!!!!!111!!!1
+             * Answer: Ask in the TF2miscinstaller.Main file!!!!!111!!!1
              *
              *
              * For future: rewrite directories as just being new .txt files ONLY for those in the TF2withSFX folder. Reason is because the .jar file can
