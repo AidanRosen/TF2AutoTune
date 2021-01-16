@@ -86,20 +86,21 @@ public class Configurations {
         folderBuilder.TF2WithSFX(Steam_Location);
         folderBuilder.Sound(Steam_Location);
 
-        String Total_Location = Steam_Location + "\\steamapps\\common\\Team Fortress 2\\tf\\custom\\TF2 With SFX\\sound\\";
+        String Total_Location = Steam_Location + "\\steamapps\\common\\Team Fortress 2\\tf\\custom\\TF2 With SFX\\"; //removed sound\\ so that we can move into any other folder within TF@ with SFX
 
 
 
-        folderBuilder.Ambient(Total_Location);
-        folderBuilder.Commentary(Total_Location);
-        folderBuilder.Doors(Total_Location);
-        folderBuilder.Items(Total_Location);
-        folderBuilder.Misc(Total_Location);
-        folderBuilder.MVM(Total_Location);
-        folderBuilder.Player(Total_Location);
-        folderBuilder.UI(Total_Location);
-        folderBuilder.VO(Total_Location);
-        folderBuilder.Weapons(Total_Location);
+        folderBuilder.Ambient(Total_Location + "sound\\");
+        folderBuilder.Commentary(Total_Location + "sound\\");
+        folderBuilder.Doors(Total_Location+ "sound\\");
+        folderBuilder.Items(Total_Location + "sound\\");
+        folderBuilder.Misc(Total_Location + "sound\\");
+        folderBuilder.MVM(Total_Location + "sound\\");
+        folderBuilder.Player(Total_Location+ "sound\\");
+        folderBuilder.UI(Total_Location + "sound\\");
+        folderBuilder.VO(Total_Location + "sound\\");
+        folderBuilder.Weapons(Total_Location + "sound\\"); //MUST concatenate the "sound\\" because Total_location no longer automatically adds sound\\
+        //No longer automatically adds sound\\ because we want to store ONLY the TF@ with SFX folder in the customPaths.txt file
 
 
 

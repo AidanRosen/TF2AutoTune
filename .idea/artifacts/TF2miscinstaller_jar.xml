@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="TF2miscinstaller.jar">
+    <output-path>$USER_HOME$/Desktop/TF2 Miscellaneous Installer</output-path>
+    <root id="archive" name="TF2miscinstaller.jar">
+      <element id="module-output" name="TF2AutoTune" />
+    </root>
+  </artifact>
+</component>

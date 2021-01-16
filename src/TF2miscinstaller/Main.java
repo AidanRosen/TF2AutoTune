@@ -24,6 +24,18 @@ public class Main {
         //to get the absolute file in order to get the parent path!
 
 
+        /**Section for deleting sound.cache*/
+        File soundCacheDetector = new File("customPaths.txt");
+        if (soundCacheDetector.exists()){
+            BufferedReader customReader = new BufferedReader(new FileReader("customPaths.txt"));//MUST use customPaths.txt and NOT soundCacheDetector because that is a different, unmodified file
+            String soundCachePath = customReader.readLine() + "sound\\" + "sound.cache";
+            File soundCache = new File(soundCachePath);
+            if (soundCache.exists()){
+                System.out.println("\n\nDeleting soundCache");
+                soundCache.delete();
+                System.out.println("SoundCache Deleted\n\n");
+            }
+        }
 
         Scanner myObj = new Scanner(System.in);  // Create a Scanner object ;;; Add a check to see if this is the first time. If so, add the storedPaths file
 
@@ -41,6 +53,7 @@ public class Main {
                                                             //This option choosing will stay in the main file. Move configuration and file movement to separate classes
             if (readiness != 1 && readiness != 0){
                 System.out.println("You MUST type in 1 or 0 silly!");
+                /**Change this to a switch case when adding HUD installation !!11!!!*/
             }
         }
         while (readiness != 0 && readiness != 1);

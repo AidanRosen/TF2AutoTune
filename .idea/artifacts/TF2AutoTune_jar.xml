@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" name="TF2AutoTune:jar">
-    <output-path>$USER_HOME$/Desktop/TF2withSFX</output-path>
-    <root id="archive" name="TF2AutoTune.jar">
-      <element id="module-output" name="TF2AutoTune" />
-    </root>
-  </artifact>
-</component>

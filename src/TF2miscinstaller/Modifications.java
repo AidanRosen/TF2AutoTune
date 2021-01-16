@@ -23,7 +23,7 @@ public class Modifications {
         else {
             System.out.println("Your configurations are not ready. Please type in 0 after returning to the main menu and enter the folder-paths for your configurations\n\n");
         }
-        Main.main(null);
+        Main.main(null);//Return to main menu
     }
 
     public void main () throws IOException {
@@ -65,7 +65,8 @@ public class Modifications {
 
 
         BufferedReader customReader = new BufferedReader(new FileReader("customPaths.txt")); //Gets you the custom folder path up to the sounds folder
-        String customDir = customReader.readLine() + category + "\\";
+        String customDir = customReader.readLine() + "sound\\" + category + "\\";
+        //MUST concatenate the sound\\ in order to move into the sound folder
 
         //For copying a file to a new place
 
