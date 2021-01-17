@@ -40,7 +40,7 @@ public class Main {
         Scanner myObj = new Scanner(System.in);  // Create a Scanner object ;;; Add a check to see if this is the first time. If so, add the storedPaths file
 
         int readiness = 3;
-        System.out.println("\n\nIs this your first time running this software? Type '0', exactly 0, if so and configurations will be run. Type '1' if you are ready to modify sounds.");
+        System.out.println("\n\nIs this your first time running this software? Type '0', exactly 0, if so and configurations will be run. Type '1' if you are ready to modify sounds. Type '2' if you are ready to install a HUD.");
 
         do {
             try{
@@ -48,15 +48,16 @@ public class Main {
             }
             catch(InputMismatchException e){
                 System.out.println("You must type in a number");
+                //2
                 main(null);
             }
                                                             //This option choosing will stay in the main file. Move configuration and file movement to separate classes
-            if (readiness != 1 && readiness != 0){
-                System.out.println("You MUST type in 1 or 0 silly!");
+            if (readiness != 1 && readiness != 0 && readiness != 2){
+                System.out.println("You MUST type in a 0, 1, or 2 silly!");
                 /**Change this to a switch case when adding HUD installation !!11!!!*/
             }
         }
-        while (readiness != 0 && readiness != 1);
+        while (readiness != 0 && readiness != 1 && readiness != 2);
 
         myObj.nextLine(); //<-- REALLY important. At the end of nextInt there's apparently a \n character, which the next .nextLine accepts as an input. We need this 'useless' .nextLine to
         //Prevent the important nextLines from reading that \n character, and instead read user input as intended from the beginning
@@ -87,10 +88,10 @@ public class Main {
             System.out.println("Returning to the main menu...\n\n\n\n\n\n");
             Main.main(null);
             /**IMPORTANT! Be sure to return to the main menu after configuration!**/
-        }
-
-        if (readiness == 1){
+        }else if (readiness == 1){
             Modifications additions = new Modifications();
+        }else if (readiness == 2){
+            HudInstaller newHud = new HudInstaller();
         }
 
 

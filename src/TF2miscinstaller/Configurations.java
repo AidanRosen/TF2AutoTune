@@ -63,9 +63,19 @@ public class Configurations {
 
         }
 
+        File onlyCustomPath = new File("onlyCustomPath.txt"); //storedPaths stores the music folder (where all wavs are kept_)
+        storedPaths.setReadable(true); //read
+        storedPaths.setWritable(true); //write
+        storedPaths.setExecutable(true);
+
+        if (!onlyCustomPath.exists()){ //This needs to trigger if the file does NOT exist. In other words, if it is false that it exists
+            onlyCustomPath.createNewFile(); //<-- will probably need a try and except <-- Ved
+
+        }
 
 
-        System.out.println("\n\nWhat is the EXACT path of the directory you contain your sound files in? BE sure to keep any soundfiles you upload in this folder! I.e C:\\Users\\username\\Desktop");
+
+        System.out.println("\n\nWhat is the EXACT path of the directory you contain your sound files and HUD folders in? Be sure to keep any soundfiles you upload in this folder! Be sure to extract your HUDS into this folder! I.e C:\\Users\\username\\Desktop. Tutorial in the README.txt of this program");
 
         String storageDir = myObj.nextLine(); // Read user input
 
@@ -74,7 +84,7 @@ public class Configurations {
 
 
 
-        System.out.println("What is the exact path of your steam directory. Input is case sensitive (Look at example for help)\n Example: C:\\Program Files (x86)\\Steam");
+        System.out.println("\n\nWhat is the exact path of your steam directory. Input is case sensitive (Look at example for help)\n Example: C:\\Program Files (x86)\\Steam");
         //Go up to ONLY custom folder i.e tf\custom <-- thats it
         //Then Ved's code adds the whatever folder, sound folder, and category folder + my code to add the .wav file
         //The category folder is after Aidan's string input
@@ -124,6 +134,7 @@ public class Configurations {
 
         //File writing area
 
+
         FileWriter storageWriter = new FileWriter(storedPaths); //storedPaths stores the music folder
         //NOTE: don't put the \n here, because that directory doesn't exist
         storageWriter.write(storageDir);//first time configuration <-- maybe have two classes for first-time configuration and second time configuration?
@@ -135,6 +146,11 @@ public class Configurations {
         FileWriter customWriter = new FileWriter(customPath); //customPath is the FILE with tfCustom/Steam_Location inside
         customWriter.write(Total_Location);
         customWriter.close();
+
+        FileWriter onlyCustomWriter = new FileWriter(onlyCustomPath); //This file contains the path ONLY UP TO custom\ . This is so that we can access both the custom folder only AND the TF2 with SFX folder within custom without unnecessary concatenation
+        onlyCustomWriter.write(Steam_Location + "\\steamapps\\common\\Team Fortress 2\\tf\\custom");//first time configuration <-- maybe have two classes for first-time configuration and second time configuration?
+
+        onlyCustomWriter.close();
 
 
     }

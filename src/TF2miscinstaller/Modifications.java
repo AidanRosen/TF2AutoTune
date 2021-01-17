@@ -13,7 +13,7 @@ public class Modifications {
 
     public Modifications() throws IOException {
         /**ADD a print statement stating what can be done in this option!!!111!!!1!!11!1!!1**/
-        File tempFile = new File("customPaths.txt");
+        File tempFile = new File("storedPaths.txt");
         if (tempFile.exists()){ //This needs to trigger if the file does NOT exist. In other words, if it is false that it exists
             System.out.println("\n\nTF2miscinstaller.Configurations ready; entering modifications");
             System.out.println("In this mode, you will enter the file name of the sound you are importing, and the name of the sound you are changing\n\n");
@@ -42,7 +42,8 @@ public class Modifications {
         //Like if Aidan types weapons\knife_swing_crit.wav, then Ved's code checks for "weapons", creates the weapons folder,
         /**Use split function to get string up to the backslash i.e weapon from weapon\knife_swing_crit.wav
          *
-         * Also add code that automatically opens that URL!!111!!1**/
+         * Also add code that automatically opens that URL!!111!!1*
+         * */
         String soundType = soundScanner.nextLine();
 
         int location = soundType.indexOf("/"); //<-- NEED a forward slash to deal with the copy-pasted sound
