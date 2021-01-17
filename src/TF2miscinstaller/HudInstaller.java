@@ -6,9 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
-import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 
 public class HudInstaller {
 
@@ -34,7 +32,7 @@ public class HudInstaller {
             // Before visiting the directory, create directory
             public FileVisitResult preVisitDirectory(final Path dir, final BasicFileAttributes attrs) throws IOException {
                 Path newDir = targetPath.resolve(sourcePath.relativize(dir));
-                System.out.println("Path- " + newDir.toString());
+
                 if (!Files.exists(newDir)) {
                     Files.createDirectory(newDir);//Need to test if the directory already exists to avoid the error FileAlreadyExists due to the .createdirectory
                 } //This if statement modifies the code block
